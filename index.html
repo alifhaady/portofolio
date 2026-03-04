@@ -628,6 +628,13 @@ document.addEventListener("DOMContentLoaded", function(){
     menu.style.display = "block";
   }
 }
+  const navLinks = document.querySelectorAll("#navLinks a");
+
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("navLinks").style.display = "none";
+  });
+});
 
 </script>
 </body>
