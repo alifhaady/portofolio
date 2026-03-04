@@ -227,7 +227,6 @@ scroll-behavior: smooth;
   gap: 20px;
   margin-top: 30px;
 }
-}
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -493,7 +492,7 @@ scroll-behavior: smooth;
 </div>
 
 <div style="text-align:center;margin-top:30px;">
-<button onclick="toggleGallery()" class="btn">See More</button>
+<button onclick="toggleGallery()" class="btn see-btn">See More</button>
 </div>
   
 </section>
@@ -576,10 +575,10 @@ let open = false;
 
 function toggleGallery(){
   const gallery = document.getElementById("more-gallery");
-  const btn = document.querySelector(".btn");
+  const btn = document.querySelector(".see-btn");
 
   if(!open){
-    gallery.style.display = "contents";
+    gallery.style.display = "grid";
     btn.innerText = "Show Less";
     open = true;
   }else{
