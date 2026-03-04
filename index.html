@@ -12,6 +12,7 @@
       color: #222;
       line-height: 1.6;
 scroll-behavior: smooth;
+      overflow-x:hidden;
     }
 
     .container {
@@ -185,13 +186,14 @@ scroll-behavior: smooth;
 .nav-links{
   position:fixed;
   top:0;
-  right:-220px;
+  right:-260px;
   height:100vh;
   background:#111;
   width:220px;
   flex-direction:column;
   padding:80px 20px;
   transition:0.3s;
+  z-index:1500;
 }
   .nav-links.active{
   right:0;
