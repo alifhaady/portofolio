@@ -162,9 +162,6 @@ scroll-behavior: smooth;
 .nav-links{
   display:flex;
 }
-.nav-links{
-  display:flex;
-}
 
 .nav-links a {
   color: white;
@@ -630,7 +627,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 navLinks.forEach(link => {
   link.addEventListener("click", () => {
-    document.getElementById("navLinks").style.display = "none";
+    document.getElementById("navLinks").classList.remove("active");
   });
 });
 
