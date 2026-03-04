@@ -535,41 +535,44 @@ scroll-behavior: smooth;
   </div>
 <script>
 
-const btn = document.getElementById("toggleBtn");
-const photos = document.querySelectorAll(".photo");
+document.addEventListener("DOMContentLoaded", function(){
 
-let expanded = false;
+  const btn = document.getElementById("toggleBtn");
+  const photos = document.querySelectorAll(".photo");
 
-/* sembunyikan semua setelah foto ke 3 */
-photos.forEach((photo,index)=>{
-  if(index > 2){
-    photo.classList.add("hidden");
-  }
-});
+  let expanded = false;
 
-btn.addEventListener("click",function(){
+  photos.forEach((photo,index)=>{
+    if(index > 2){
+      photo.classList.add("hidden");
+    }
+  });
 
-  if(!expanded){
+  btn.addEventListener("click", function(){
 
-    photos.forEach(photo=>{
-      photo.classList.remove("hidden");
-    });
+    if(!expanded){
 
-    btn.innerText = "Show Less";
-    expanded = true;
+      photos.forEach(photo=>{
+        photo.classList.remove("hidden");
+      });
 
-  }else{
+      btn.innerText = "Show Less";
+      expanded = true;
 
-    photos.forEach((photo,index)=>{
-      if(index > 2){
-        photo.classList.add("hidden");
-      }
-    });
+    }else{
 
-    btn.innerText = "Show More";
-    expanded = false;
+      photos.forEach((photo,index)=>{
+        if(index > 2){
+          photo.classList.add("hidden");
+        }
+      });
 
-  }
+      btn.innerText = "Show More";
+      expanded = false;
+
+    }
+
+  });
 
 });
 
