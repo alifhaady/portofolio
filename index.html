@@ -186,15 +186,18 @@ scroll-behavior: smooth;
 @media (max-width:768px){
 
 .nav-links{
-  position:absolute;
-  top:60px;
-  right:0;
+  position:fixed;
+  top:0;
+  right:-220px;
+  height:100vh;
   background:#111;
-  width:200px;
+  width:220px;
   flex-direction:column;
-  text-align:left;
-  padding:20px;
-  display:none;
+  padding:80px 20px;
+  transition:0.3s;
+}
+  .nav-links.active{
+  right:0;
 }
 
 .nav-links a{
@@ -619,14 +622,9 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 
 });
-  function toggleMenu(){
+ function toggleMenu(){
   const menu = document.getElementById("navLinks");
-
-  if(menu.style.display === "block"){
-    menu.style.display = "none";
-  }else{
-    menu.style.display = "block";
-  }
+  menu.classList.toggle("active");
 }
   const navLinks = document.querySelectorAll("#navLinks a");
 
