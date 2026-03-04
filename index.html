@@ -381,6 +381,9 @@ scroll-behavior: smooth;
   max-height:90%;
   border-radius:10px;
 }
+  .more-photo{
+  display:none;
+}
   </style>
 </head>
 <body>
@@ -470,7 +473,6 @@ scroll-behavior: smooth;
 <img src="2.jpg" onclick="openImage(this.src)">
 <img src="3.jpg" onclick="openImage(this.src)">
 
-<div id="more-gallery">
 
 <img src="4.jpg" onclick="openImage(this.src)">
 <img src="5.jpg" onclick="openImage(this.src)">
@@ -490,8 +492,6 @@ scroll-behavior: smooth;
 <img src="19.jpg" onclick="openImage(this.src)">
 <img src="20.jpg" onclick="openImage(this.src)">
 <img src="21.jpg" onclick="openImage(this.src)">
-
-</div>
 
 </div>
 
@@ -578,16 +578,22 @@ function showMore() {
 let open = false;
 
 function toggleGallery(){
-  const gallery = document.getElementById("more-gallery");
+
+  const photos = document.querySelectorAll(".more-photo");
   const btn = document.querySelector(".see-btn");
 
-  if(gallery.style.display === "block"){
-    gallery.style.display = "none";
-    btn.innerText = "See More";
-  } else {
-    gallery.style.display = "contents";
+  if(btn.innerText === "See More"){
+
+    photos.forEach(p => p.style.display = "block");
     btn.innerText = "Show Less";
+
+  } else {
+
+    photos.forEach(p => p.style.display = "none");
+    btn.innerText = "See More";
+
   }
+
 }
 function openImage(src){
   const lightbox = document.createElement("div");
