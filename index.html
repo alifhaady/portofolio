@@ -286,7 +286,6 @@ scroll-behavior: smooth;
 }.gallery {
   margin-bottom: 120px;
 }
-}
 
 .contact-container {
   max-width: 700px;
@@ -533,68 +532,34 @@ scroll-behavior: smooth;
     </div>
 
   </div>
-</section>
 
 <script>
-window.addEventListener("scroll", function() {
-  const navbar = document.querySelector(".navbar");
 
-  if (window.scrollY > 50) {
-    navbar.style.background = "#111";
-  } else {
-    navbar.style.background = "rgba(17,17,17,0.9)";
-  }
+const btn = document.getElementById("toggleBtn");
+const photos = document.querySelectorAll(".more-photo");
 
-  document.querySelectorAll(".fade-in").forEach(el => {
-    const position = el.getBoundingClientRect().top;
-    if (position < window.innerHeight - 100) {
-      el.classList.add("show");
-    }
-  });
-});
-</script>
-<script>
-window.addEventListener("scroll", function() {
-  const navbar = document.querySelector(".navbar");
-  if (window.scrollY > 50) {
-    navbar.style.background = "#111";
-  } else {
-    navbar.style.background = "rgba(17,17,17,0.9)";
-  }
-});
-  <script>
-function showMore() {
-  document.getElementById("more-photos").style.display = "grid";
-}
-</script>
-  <script>
-function showMore() {
-  document.getElementById("more-photos").style.display = "contents";
-  document.querySelector(".see-more").style.display = "none";
-}
-</script>
-  <script>
-
-let open = false;
-
-function toggleGallery(){
-
-  const photos = document.querySelectorAll(".more-photo");
-  const btn = document.querySelector(".see-btn");
+btn.addEventListener("click", function(){
 
   if(btn.innerText === "See More"){
 
-    photos.forEach(p => p.style.display = "block");
+    photos.forEach(photo=>{
+      photo.style.display = "block";
+    });
+
     btn.innerText = "Show Less";
 
   } else {
 
-    photos.forEach(p => p.style.display = "none");
+    photos.forEach(photo=>{
+      photo.style.display = "none";
+    });
+
     btn.innerText = "See More";
 
   }
 
-}
+});
+
 function openImage(src){
   const lightbox = document.createElement("div");
   lightbox.className = "lightbox";
@@ -612,31 +577,6 @@ function openImage(src){
 }
 
 </script>
-</script>
-  const btn = document.getElementById("toggleBtn");
-const photos = document.querySelectorAll(".more-photo");
-
-btn.addEventListener("click", function(){
-
-  if(btn.innerText === "See More"){
-
-    photos.forEach(photo=>{
-      photo.style.display = "block";
-    });
-
-    btn.innerText = "Show Less";
-
-  }else{
-
-    photos.forEach(photo=>{
-      photo.style.display = "none";
-    });
-
-    btn.innerText = "See More";
-
-  }
-
-});
 </body>
 </html>
 
