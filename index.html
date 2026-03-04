@@ -140,10 +140,15 @@ scroll-behavior: smooth;
   position: fixed;
   width: 100%;
   top: 0;
-  background: rgba(17, 17, 17, 0.9);
-  backdrop-filter: blur(8px);
+  background: transparent;
   padding: 15px 0;
   z-index: 1000;
+  transition: 0.3s;
+}
+
+.navbar.scrolled{
+  background: rgba(17,17,17,0.9);
+  backdrop-filter: blur(8px);
 }
 
 .nav-container {
@@ -633,6 +638,18 @@ navLinks.forEach(link => {
   });
 });
 
+window.addEventListener("scroll", function(){
+
+  const navbar = document.querySelector(".navbar");
+
+  if(window.scrollY > 50){
+    navbar.classList.add("scrolled");
+  }else{
+    navbar.classList.remove("scrolled");
+  }
+
+});
+  
 </script>
 </body>
 </html>
