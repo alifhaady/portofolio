@@ -497,7 +497,7 @@ scroll-behavior: smooth;
 </div>
 
 <div style="text-align:center;margin-top:30px;">
-<button onclick="toggleGallery()" class="btn see-btn">Show More</button>
+<button onclick="toggleGallery()" class="btn see-btn">See More</button>
 </div>
 
 </section>
@@ -582,17 +582,14 @@ function toggleGallery(){
   const gallery = document.getElementById("more-gallery");
   const btn = document.querySelector(".see-btn");
 
-  if(!open){
+  if (gallery.style.display === "none" || gallery.style.display === "") {
     gallery.style.display = "contents";
     btn.innerText = "Show Less";
-    open = true;
-  }else{
+  } else {
     gallery.style.display = "none";
     btn.innerText = "See More";
-    open = false;
   }
 }
-
 function openImage(src){
   const lightbox = document.createElement("div");
   lightbox.className = "lightbox";
