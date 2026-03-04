@@ -267,7 +267,19 @@ scroll-behavior: smooth;
   text-align: center;
   padding: 100px 20px;
 }
+.see-more {
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
 
+.see-more:hover {
+  background: #333;
+}
 .contact {
   background: #0b0b0b;
   padding: 200px 20px 140px 20px;
@@ -435,12 +447,9 @@ scroll-behavior: smooth;
 <img src="2.jpg">
 <img src="3.jpg">
 
+<button class="see-more" onclick="showMore()">See More</button>
+
 <div id="more-photos" style="display:none;">
-  <div style="text-align:center; margin-top:30px;">
-<button onclick="showMore()" class="btn">
-See More
-</button>
-</div>
 
 <img src="4.jpg">
 <img src="5.jpg">
@@ -530,6 +539,12 @@ window.addEventListener("scroll", function() {
   <script>
 function showMore() {
   document.getElementById("more-photos").style.display = "grid";
+}
+</script>
+  <script>
+function showMore() {
+  document.getElementById("more-photos").style.display = "contents";
+  document.querySelector(".see-more").style.display = "none";
 }
 </script>
 </script>
