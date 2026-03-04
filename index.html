@@ -359,6 +359,9 @@ scroll-behavior: smooth;
 #more-gallery{
   display:none;
 }
+#more-gallery img{
+  width:100%;
+}
 
 .lightbox{
   position:fixed;
@@ -492,10 +495,6 @@ scroll-behavior: smooth;
 
 </div>
 
-</div>
-
-</div>
-
 <div style="text-align:center;margin-top:30px;">
 <button onclick="toggleGallery()" class="btn see-btn">See More</button>
 </div>
@@ -582,12 +581,12 @@ function toggleGallery(){
   const gallery = document.getElementById("more-gallery");
   const btn = document.querySelector(".see-btn");
 
-  if (gallery.style.display === "none" || gallery.style.display === "") {
-    gallery.style.display = "contents";
-    btn.innerText = "Show Less";
-  } else {
+  if(gallery.style.display === "block"){
     gallery.style.display = "none";
     btn.innerText = "See More";
+  } else {
+    gallery.style.display = "contents";
+    btn.innerText = "Show Less";
   }
 }
 function openImage(src){
