@@ -359,6 +359,8 @@ scroll-behavior: smooth;
 }
 #more-gallery{
   display:none;
+  grid-column: 1 / -1;   /* biar ikut lebar grid */
+}
 }
 
 .lightbox{
@@ -577,7 +579,7 @@ function toggleGallery(){
   const btn = document.querySelector(".btn");
 
   if(!open){
-    gallery.style.display = "grid";
+    gallery.style.display = "contents";
     btn.innerText = "Show Less";
     open = true;
   }else{
