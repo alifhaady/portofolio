@@ -21,7 +21,7 @@ scroll-behavior: smooth;
     }
 
  .hero {
-  background: url("images/bg.jpg") center/cover no-repeat;
+  background: url("bg.jpg") center/cover no-repeat;
   color: white;
   text-align: center;
   padding: 160px 20px 120px 20px;
@@ -267,7 +267,19 @@ scroll-behavior: smooth;
   text-align: center;
   padding: 100px 20px;
 }
+.see-more {
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
 
+.see-more:hover {
+  background: #333;
+}
 .contact {
   background: #0b0b0b;
   padding: 200px 20px 140px 20px;
@@ -332,35 +344,43 @@ scroll-behavior: smooth;
 .contact-links .cv:hover {
   background: white;
   color: black;
-}.contact-links {
+.contact-links {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 50px;
   flex-wrap: wrap;
   margin-top: 40px;
-}
-.contact-links .porto {
-  border: 1px solid white;
-  padding: 8px 18px;
-  border-radius: 20px;
 }
 
-.contact-links .porto:hover {
-  background: white;
-  color: black;
-}.contact-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  flex-wrap: wrap;
-  margin-top: 40px;
 .contact-links a {
   font-size: 16px;
   letter-spacing: 0.5px;
 }
+#more-gallery{
+  display:none;
+  grid-column: 1 / -1;   /* biar ikut lebar grid */
+}
+}
 
+.lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+}
+
+.lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:10px;
+}
   </style>
 </head>
 <body>
@@ -380,7 +400,7 @@ scroll-behavior: smooth;
 
   <section class="hero">
     <div class="container">
-<img src="images/ffoto.jpg" class="profile-pic">
+<img src="ffoto.jpg" class="profile-pic">
       <h1>Alif Maulana Hadiyuddin</h1>
       <p class="tagline">Empowering People, Building Culture</p>
     </div>
@@ -406,7 +426,7 @@ scroll-behavior: smooth;
 
   <div class="cards">
     <div class="card">
-      <h3>Sekretaris Jendral</h3>
+      <h3>Secretary General</h3>
       <p>DPM FEB UB • 2025</p>
     </div>
 
@@ -441,32 +461,41 @@ scroll-behavior: smooth;
 </section>
 
 
-<section id="documentation" class="gallery container fade-in">
-  <h2>Documentation</h2>
+<div class="gallery-grid">
 
-  <div class="gallery-grid">
-    <img src="images/1.jpg" alt="">
-    <img src="images/2.jpg" alt="">
-    <img src="images/3.jpg" alt="">
-    <img src="images/4.jpg" alt="">
-<img src="images/5.jpg" alt="">
-<img src="images/6.jpg" alt="">
-<img src="images/7.jpg" alt="">
-<img src="images/8.jpg" alt="">
-<img src="images/9.jpg" alt="">
-<img src="images/10.jpg" alt="">
-<img src="images/11.jpg" alt="">
-<img src="images/12.jpg" alt="">
-<img src="images/13.jpg" alt="">
-<img src="images/14.jpg" alt="">
-<img src="images/15.jpg" alt="">
-<img src="images/16.jpg" alt="">
-<img src="images/17.jpg" alt="">
-<img src="images/18.jpg" alt="">
-<img src="images/19.jpg" alt="">
-<img src="images/20.jpg" alt="">
-<img src="images/21.jpg" alt="">
-  </div>
+<img src="1.jpg" onclick="openImage(this.src)">
+<img src="2.jpg" onclick="openImage(this.src)">
+<img src="3.jpg" onclick="openImage(this.src)">
+
+<div id="more-gallery">
+
+<img src="4.jpg" onclick="openImage(this.src)">
+<img src="5.jpg" onclick="openImage(this.src)">
+<img src="6.jpg" onclick="openImage(this.src)">
+<img src="7.jpg" onclick="openImage(this.src)">
+<img src="8.jpg" onclick="openImage(this.src)">
+<img src="9.jpg" onclick="openImage(this.src)">
+<img src="10.jpg" onclick="openImage(this.src)">
+<img src="11.jpg" onclick="openImage(this.src)">
+<img src="12.jpg" onclick="openImage(this.src)">
+<img src="13.jpg" onclick="openImage(this.src)">
+<img src="14.jpg" onclick="openImage(this.src)">
+<img src="15.jpg" onclick="openImage(this.src)">
+<img src="16.jpg" onclick="openImage(this.src)">
+<img src="17.jpg" onclick="openImage(this.src)">
+<img src="18.jpg" onclick="openImage(this.src)">
+<img src="19.jpg" onclick="openImage(this.src)">
+<img src="20.jpg" onclick="openImage(this.src)">
+<img src="21.jpg" onclick="openImage(this.src)">
+
+</div>
+
+</div>
+
+<div style="text-align:center;margin-top:30px;">
+<button onclick="toggleGallery()" class="btn">See More</button>
+</div>
+  
 </section>
 
 <section id="contact" class="contact fade-in">
@@ -494,9 +523,9 @@ scroll-behavior: smooth;
       <a href="cv-alif.pdf" target="_blank" class="cv">
         Download CV
       </a>
-<a href="Portofolio Alif Haady.pdf" target="_blank" class="porto">
-       Download Porto
-      </a>
+<a href="Portofolio Alif Haady.pdf" target="_blank" class="cv">
+  Download Porto
+</a>
 
     </div>
 
@@ -530,6 +559,55 @@ window.addEventListener("scroll", function() {
     navbar.style.background = "rgba(17,17,17,0.9)";
   }
 });
+  <script>
+function showMore() {
+  document.getElementById("more-photos").style.display = "grid";
+}
+</script>
+  <script>
+function showMore() {
+  document.getElementById("more-photos").style.display = "contents";
+  document.querySelector(".see-more").style.display = "none";
+}
+</script>
+  <script>
+
+let open = false;
+
+function toggleGallery(){
+  const gallery = document.getElementById("more-gallery");
+  const btn = document.querySelector(".btn");
+
+  if(!open){
+    gallery.style.display = "contents";
+    btn.innerText = "Show Less";
+    open = true;
+  }else{
+    gallery.style.display = "none";
+    btn.innerText = "See More";
+    open = false;
+  }
+}
+
+function openImage(src){
+  const lightbox = document.createElement("div");
+  lightbox.className = "lightbox";
+
+  const img = document.createElement("img");
+  img.src = src;
+
+  lightbox.appendChild(img);
+
+  lightbox.onclick = function(){
+    lightbox.remove();
+  }
+
+  document.body.appendChild(lightbox);
+}
+
+</script>
 </script>
 </body>
+</html>
+
 </html>
