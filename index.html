@@ -383,6 +383,9 @@ scroll-behavior: smooth;
   .more-photo{
   display:none;
 }
+  .hidden{
+  display:none;
+}
   </style>
 </head>
 <body>
@@ -468,29 +471,27 @@ scroll-behavior: smooth;
 
 <div class="gallery-grid">
 
-<img src="1.jpg" class="more-photo" onclick="openImage(this.src)">
-<img src="2.jpg" class="more-photo" onclick="openImage(this.src)">
-<img src="3.jpg" class="more-photo" onclick="openImage(this.src)">
-
-
-<img src="4.jpg" class="more-photo" onclick="openImage(this.src)">
-<img src="5.jpg" class="more-photo" onclick="openImage(this.src)">
-<img src="6.jpg" class="more-photo" onclick="openImage(this.src)">
-  <img src="7.jpg" class="more-photo" onclick="openImage(this.src)">
-<img src="8.jpg" class="more-photo" onclick="openImage(this.src)">
-<img src="9.jpg" class="more-photo" onclick="openImage(this.src)">
-  <img src="10.jpg" class="more-photo" onclick="openImage(this.src)">
-<img src="11.jpg" class="more-photo" onclick="openImage(this.src)">
-<img src="12.jpg" class="more-photo" onclick="openImage(this.src)">
-  <img src="13.jpg" class="more-photo" onclick="openImage(this.src)">
-<img src="14.jpg" class="more-photo" onclick="openImage(this.src)">
-<img src="15.jpg" class="more-photo" onclick="openImage(this.src)">
-  <img src="16.jpg" class="more-photo" onclick="openImage(this.src)">
-<img src="17.jpg" class="more-photo" onclick="openImage(this.src)">
-<img src="18.jpg" class="more-photo" onclick="openImage(this.src)">
-  <img src="19.jpg" class="more-photo" onclick="openImage(this.src)">
-<img src="20.jpg" class="more-photo" onclick="openImage(this.src)">
-  <img src="21.jpg" class="more-photo" onclick="openImage(this.src)">
+<img src="1.jpg" class="photo" onclick="openImage(this.src)">
+<img src="2.jpg" class="photo" onclick="openImage(this.src)">
+<img src="3.jpg" class="photo" onclick="openImage(this.src)">
+<img src="4.jpg" class="photo" onclick="openImage(this.src)">
+<img src="5.jpg" class="photo" onclick="openImage(this.src)">
+<img src="6.jpg" class="photo" onclick="openImage(this.src)">
+<img src="7.jpg" class="photo" onclick="openImage(this.src)">
+  <img src="8.jpg" class="photo" onclick="openImage(this.src)">
+<img src="9.jpg" class="photo" onclick="openImage(this.src)">
+<img src="10.jpg" class="photo" onclick="openImage(this.src)">
+<img src="11.jpg" class="photo" onclick="openImage(this.src)">
+<img src="12.jpg" class="photo" onclick="openImage(this.src)">
+<img src="13.jpg" class="photo" onclick="openImage(this.src)">
+<img src="14.jpg" class="photo" onclick="openImage(this.src)">
+  <img src="15.jpg" class="photo" onclick="openImage(this.src)">
+<img src="16.jpg" class="photo" onclick="openImage(this.src)">
+<img src="17.jpg" class="photo" onclick="openImage(this.src)">
+<img src="18.jpg" class="photo" onclick="openImage(this.src)">
+<img src="19.jpg" class="photo" onclick="openImage(this.src)">
+<img src="20.jpg" class="photo" onclick="openImage(this.src)">
+<img src="21.jpg" class="photo" onclick="openImage(this.src)">
  
 </div>
 
@@ -532,49 +533,46 @@ scroll-behavior: smooth;
         </div>
 
   </div>
-</section>
-
 <script>
+
 const btn = document.getElementById("toggleBtn");
-const photos = document.querySelectorAll(".more-photo");
+const photos = document.querySelectorAll(".photo");
 
-btn.addEventListener("click", function(){
+let expanded = false;
 
-  if(btn.innerText === "See More"){
+/* sembunyikan semua setelah foto ke 3 */
+photos.forEach((photo,index)=>{
+  if(index > 2){
+    photo.classList.add("hidden");
+  }
+});
+
+btn.addEventListener("click",function(){
+
+  if(!expanded){
 
     photos.forEach(photo=>{
-      photo.style.display = "block";
+      photo.classList.remove("hidden");
     });
 
     btn.innerText = "Show Less";
+    expanded = true;
 
-  } else {
+  }else{
 
-    photos.forEach(photo=>{
-      photo.style.display = "none";
+    photos.forEach((photo,index)=>{
+      if(index > 2){
+        photo.classList.add("hidden");
+      }
     });
 
-    btn.innerText = "See More";
+    btn.innerText = "Show More";
+    expanded = false;
 
   }
 
 });
 
-function openImage(src){
-  const lightbox = document.createElement("div");
-  lightbox.className = "lightbox";
-
-  const img = document.createElement("img");
-  img.src = src;
-
-  lightbox.appendChild(img);
-
-  lightbox.onclick = function(){
-    lightbox.remove();
-  }
-
-  document.body.appendChild(lightbox);
-}
 </script>
 
 </body>
