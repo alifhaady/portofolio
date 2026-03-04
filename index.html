@@ -273,14 +273,15 @@ scroll-behavior: smooth;
   gap: 20px;
   margin-top: 30px;
 }
-.fade-in {
-  opacity: 1;
-  transition: 0.8s ease;
+.fade-in{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s;
 }
 
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
+.fade-in.show{
+  opacity:1;
+  transform:translateY(0);
 }
 .skills {
   text-align: center;
@@ -649,6 +650,25 @@ window.addEventListener("scroll", function(){
   }
 
 });
+
+  const faders = document.querySelectorAll(".fade-in");
+
+window.addEventListener("scroll", () => {
+
+  const trigger = window.innerHeight * 0.85;
+
+  faders.forEach(el => {
+
+    const top = el.getBoundingClientRect().top;
+
+    if(top < trigger){
+      el.classList.add("show");
+    }
+
+  });
+
+});
+  
   
 </script>
 </body>
