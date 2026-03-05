@@ -13,16 +13,17 @@
 <meta name="author" content="Alif Maulana Hadiyuddin">
   
   <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f4f4f4;
-      color: #222;
-      line-height: 1.6;
-scroll-behavior: smooth;
-      overflow-x:hidden;
-    }
+   body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f4f4f4;
+  color: #222;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x:hidden;
 
+  transition: background 0.4s ease, color 0.4s ease;
+}
     .container {
       max-width: 900px;
       margin: auto;
@@ -250,7 +251,7 @@ scroll-behavior: smooth;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transition: 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .card:hover {
@@ -893,6 +894,12 @@ window.addEventListener("load", revealOnScroll);
 
   body.classList.toggle("dark");
 
+  if(body.classList.contains("dark")){
+    localStorage.setItem("theme","dark");
+  }else{
+    localStorage.setItem("theme","light");
+  }
+
 }
   window.addEventListener("load", function(){
 
@@ -906,7 +913,20 @@ window.addEventListener("load", revealOnScroll);
   },500);
 
 });
-  
+  window.addEventListener("DOMContentLoaded", () => {
+
+  const savedTheme = localStorage.getItem("theme");
+
+  if(savedTheme === "dark"){
+    document.body.classList.add("dark");
+
+    const toggle = document.querySelector(".theme-switch input");
+    if(toggle){
+      toggle.checked = true;
+    }
+  }
+
+});
 </script>
 </body>
 </html>
