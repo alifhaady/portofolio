@@ -440,7 +440,6 @@ scroll-behavior: smooth;
   display:none;
 }
 
-/* HERO ANIMATION */
 @keyframes heroFade{
 
 from{
@@ -454,7 +453,32 @@ to{
 }
 
 }
-  </style>
+
+/* FOOTER */
+
+.footer{
+  background:#000;
+  color:#aaa;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.footer-container{
+  max-width:900px;
+  margin:auto;
+}
+
+.footer p{
+  margin:5px 0;
+  font-size:14px;
+}
+
+.footer-sub{
+  font-size:13px;
+  opacity:0.7;
+}
+
+</style>
 </head>
 <body>
 <nav class="navbar">
@@ -606,6 +630,15 @@ to{
         </div>
 
   </div>
+  <footer class="footer">
+  <div class="footer-container">
+    <p>© 2026 Alif Haady</p>
+    <p class="footer-sub">
+      Built with HTML • CSS • JavaScript
+    </p>
+  </div>
+</footer>
+
 <script>
 
 document.addEventListener("DOMContentLoaded", function(){
