@@ -506,6 +506,27 @@ body.dark .navbar.scrolled{
   background:rgba(0,0,0,0.9);
 }
 
+    .scroll-indicator{
+  position:absolute;
+  bottom:40px;
+  left:50%;
+  transform:translateX(-50%);
+  color:white;
+  font-size:14px;
+  opacity:0.8;
+  animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+  0%,100%{
+    transform:translate(-50%,0);
+  }
+
+  50%{
+    transform:translate(-50%,8px);
+  }
+}
+    
 </style>
 </head>
 <body>
@@ -542,7 +563,12 @@ body.dark .navbar.scrolled{
   <a href="#experience" class="btn">View Experience</a>
  <a href="#contact" class="btn btn-outline">Contact Me</a>
 </div>
-  </section>
+
+<div class="scroll-indicator">
+↓ Scroll
+</div>
+
+</section>
 
  <section id="about" class="about container fade-in">
     <h2>About Me</h2>
