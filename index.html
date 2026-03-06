@@ -32,6 +32,7 @@
 
  .hero {
   background: url("bgg.jpg") center/cover no-repeat;
+   background-attachment: fixed;
   color: white;
   text-align: center;
   padding: 160px 20px 120px 20px;
@@ -52,11 +53,6 @@
 }
 
 .buttons {
-  position: relative;
-  z-index: 2;
-}
-
-.hero .container {
   position: relative;
   z-index: 2;
 }
@@ -121,11 +117,7 @@
   }
 
 }
-    #typing::after{
-  content:"|";
-  animation: blink 1s infinite;
-}
-
+   
 @keyframes blink{
   0%{opacity:1;}
   50%{opacity:0;}
@@ -291,24 +283,23 @@
 .nav-links{
   position:fixed;
   top:0;
-  right:-260px;
+  right:0;
   height:100vh;
- background: rgba(20,20,20,0.75);
-backdrop-filter: blur(12px);
--webkit-backdrop-filter: blur(12px);
-border-left: 1px solid rgba(255,255,255,0.08);
   width:220px;
+
+  background: rgba(20,20,20,0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-left: 1px solid rgba(255,255,255,0.08);
+
   flex-direction:column;
   padding:80px 20px;
   z-index:1500;
 
-  opacity:0;
-  transform:translateX(40px);
-  transition:all 0.4s ease;
+  transform:translateX(100%);
+  transition: transform 0.45s cubic-bezier(.25,.8,.25,1);
 }
- .nav-links.active{
-  right:0;
-  opacity:1;
+.nav-links.active{
   transform:translateX(0);
 }
 
@@ -316,8 +307,8 @@ border-left: 1px solid rgba(255,255,255,0.08);
   display:block;
   margin:15px 0;
   opacity:0;
-  transform:translateX(20px);
-  transition:all 0.35s ease;
+  transform:translateX(30px);
+  transition:all 0.4s ease;
 }
 .hamburger{
   display:block;
@@ -347,10 +338,18 @@ border-left: 1px solid rgba(255,255,255,0.08);
   transition: all 0.4s ease;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.card{
+  background:white;
+  padding:20px;
+  border-radius:8px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+  transition:all 0.35s ease;
 }
 
+.card:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
 .card h3 {
   margin: 0 0 10px 0;
 }
@@ -454,13 +453,6 @@ border-left: 1px solid rgba(255,255,255,0.08);
 .contact-sub {
   color: #aaa;
   margin-bottom: 40px;
-}
-
-.contact-links {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
 }
 
 .contact-links a {
@@ -698,13 +690,52 @@ body.dark .navbar.scrolled{
   opacity:1;
   transform:translateX(0);
 }
-    
+    .menu-overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(6px);
+  opacity:0;
+  pointer-events:none;
+  transition:0.3s ease;
+  z-index:1400;
+}
+
+.menu-overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
+    .scroll-bar{
+  position:fixed;
+  top:0;
+  left:0;
+  height:3px;
+  background:white;
+  width:0%;
+  z-index:3000;
+}
+    .nav-links.active a{
+  opacity:1;
+  transform:translateX(0);
+}
+
+.nav-links.active a:nth-child(1){transition-delay:0.1s;}
+.nav-links.active a:nth-child(2){transition-delay:0.15s;}
+.nav-links.active a:nth-child(3){transition-delay:0.2s;}
+.nav-links.active a:nth-child(4){transition-delay:0.25s;}
+.nav-links.active a:nth-child(5){transition-delay:0.3s;}
+.nav-links.active a:nth-child(6){transition-delay:0.35s;}
 </style>
 </head>
 <body>
+  <div class="scroll-bar" id="scrollBar"></div>
   <div id="loader">
   <div class="spinner"></div>
 </div>
+  <div class="menu-overlay" id="menuOverlay"></div>
 <nav class="navbar">
   <div class="nav-container">
   <div class="logo">Alif Haady</div>
@@ -952,9 +983,11 @@ document.addEventListener("DOMContentLoaded", function(){
 
   const menu = document.getElementById("navLinks");
   const hamburger = document.getElementById("hamburger");
+  const overlay = document.getElementById("menuOverlay");
 
   menu.classList.toggle("active");
   hamburger.classList.toggle("active");
+  overlay.classList.toggle("active");
 
 }
  document.addEventListener("click", function(event){
@@ -1064,6 +1097,20 @@ window.addEventListener("load", revealOnScroll);
 
 });
 
+  window.addEventListener("scroll", function(){
+
+  const scrollBar = document.getElementById("scrollBar");
+
+  const height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+  const scrolled =
+    (window.scrollY / height) * 100;
+
+  scrollBar.style.width = scrolled + "%";
+
+});
   
 </script>
 </body>
