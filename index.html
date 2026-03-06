@@ -986,7 +986,8 @@ document.addEventListener("click", function(event){
   if(
     menu.classList.contains("active") &&
     !menu.contains(event.target) &&
-    !hamburger.contains(event.target)
+    !hamburger.contains(event.target) &&
+    !event.target.closest(".theme-switch")
   ){
     menu.classList.remove("active");
     hamburger.classList.remove("active");
