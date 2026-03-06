@@ -101,6 +101,16 @@
   animation: heroFade 1s ease forwards;
   animation-delay:0.4s;
 }
+    #typing::after{
+  content:"|";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink{
+  0%{opacity:1;}
+  50%{opacity:0;}
+  100%{opacity:1;}
+}
     
     h2 {
       margin-bottom: 20px;
@@ -166,10 +176,11 @@
 }
 
 .navbar.scrolled{
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.35s ease;
 }
 
 .nav-container {
@@ -685,7 +696,9 @@ body.dark .navbar.scrolled{
     <div class="container">
 <img src="ffoto.jpg" class="profile-pic">
       <h1>Alif Maulana Hadiyuddin</h1>
-      <p class="tagline">Empowering People, Building Culture</p>
+      <p class="tagline">
+<span id="typing"></span>
+</p>
     </div>
 <div class="buttons">
   <a href="#experience" class="btn">View Experience</a>
@@ -1007,6 +1020,23 @@ window.addEventListener("load", revealOnScroll);
   hero.style.backgroundPositionY = offset * 0.5 + "px";
 
 });
+
+  const text = "Empowering People, Building Culture";
+let index = 0;
+
+function typingEffect(){
+
+  if(index < text.length){
+
+    document.getElementById("typing").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typingEffect, 50);
+
+  }
+
+}
+
+window.addEventListener("load", typingEffect);
   
 </script>
 </body>
