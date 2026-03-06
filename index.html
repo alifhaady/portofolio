@@ -213,7 +213,10 @@
   top:0;
   right:-260px;
   height:100vh;
-  background:#111;
+ background: rgba(20,20,20,0.75);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border-left: 1px solid rgba(255,255,255,0.08);
   width:220px;
   flex-direction:column;
   padding:80px 20px;
@@ -865,6 +868,19 @@ document.addEventListener("DOMContentLoaded", function(){
   const menu = document.getElementById("navLinks");
   menu.classList.toggle("active");
 }
+  document.addEventListener("click", function(event){
+
+  const menu = document.getElementById("navLinks");
+  const hamburger = document.querySelector(".hamburger");
+
+  if(
+    !menu.contains(event.target) &&
+    !hamburger.contains(event.target)
+  ){
+    menu.classList.remove("active");
+  }
+
+});
   const navLinks = document.querySelectorAll("#navLinks a");
 
 navLinks.forEach(link => {
