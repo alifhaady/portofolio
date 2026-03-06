@@ -185,6 +185,9 @@
 .nav-links{
   display:flex;
 }
+    .menu-switch{
+  margin-bottom:25px;
+}
 
 .nav-links a {
   color: white;
@@ -611,23 +614,26 @@ body.dark .navbar.scrolled{
 <nav class="navbar">
   <div class="nav-container">
   <div class="logo">Alif Haady</div>
-    
-<label class="theme-switch">
-<input type="checkbox" onclick="toggleTheme()">
-<span class="slider"></span>
-</label>
+
 
 <div class="hamburger" onclick="toggleMenu()">
 ☰
 </div>
 
 <div class="nav-links" id="navLinks">
+
+<label class="theme-switch menu-switch">
+<input type="checkbox" onclick="toggleTheme()">
+<span class="slider"></span>
+</label>
+
   <a href="#about">About</a>
   <a href="#experience">Experience</a>
   <a href="#skills">Skills</a>
   <a href="#documentation">Documentation</a>
-   <a href="#projects">Projects</a>
+  <a href="#projects">Projects</a>
   <a href="#contact">Contact</a>
+
 </div>
     </div>
   </div>
