@@ -32,7 +32,6 @@
 
  .hero {
   background: url("bgg.jpg") center/cover no-repeat;
-   background-attachment: fixed;
   color: white;
   text-align: center;
   padding: 160px 20px 120px 20px;
@@ -213,17 +212,6 @@
   display:flex;
 }
 
-@media (max-width:768px){
-
-.nav-links{
-  display:none;
-}
-
-.nav-links.active{
-  display:flex;
-}
-
-}
     .menu-switch{
   margin-bottom:25px;
 }
@@ -690,14 +678,13 @@ body.dark .navbar.scrolled{
   opacity:1;
   transform:translateX(0);
 }
-    .menu-overlay{
+   .menu-overlay{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100vh;
-  background:rgba(0,0,0,0.35);
-  backdrop-filter:blur(6px);
+  background:rgba(0,0,0,0.25);
   opacity:0;
   pointer-events:none;
   transition:0.3s ease;
