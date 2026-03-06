@@ -977,10 +977,11 @@ document.addEventListener("DOMContentLoaded", function(){
   overlay.classList.toggle("active");
 
 }
- document.addEventListener("click", function(event){
+document.addEventListener("click", function(event){
 
   const menu = document.getElementById("navLinks");
   const hamburger = document.getElementById("hamburger");
+  const overlay = document.getElementById("menuOverlay");
 
   if(
     menu.classList.contains("active") &&
@@ -989,6 +990,7 @@ document.addEventListener("DOMContentLoaded", function(){
   ){
     menu.classList.remove("active");
     hamburger.classList.remove("active");
+    overlay.classList.remove("active");
   }
 
 });
@@ -999,10 +1001,10 @@ navLinks.forEach(link => {
 
     document.getElementById("navLinks").classList.remove("active");
     document.getElementById("hamburger").classList.remove("active");
+    document.getElementById("menuOverlay").classList.remove("active");
 
   });
 });
-
 window.addEventListener("scroll", function(){
 
   const navbar = document.querySelector(".navbar");
