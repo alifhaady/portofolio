@@ -220,6 +220,18 @@
 .nav-links{
   display:flex;
 }
+
+@media (max-width:768px){
+
+.nav-links{
+  display:none;
+}
+
+.nav-links.active{
+  display:flex;
+}
+
+}
     .menu-switch{
   margin-bottom:25px;
 }
@@ -272,7 +284,6 @@
 
 .hamburger.active span:nth-child(3){
   transform:translateY(-9px) rotate(-45deg);
-}orm:translateY(-9px) rotate(-45deg);
 }
 /* MOBILE */
 @media (max-width:768px){
@@ -1053,19 +1064,6 @@ window.addEventListener("load", revealOnScroll);
 
 });
 
-function typingEffect(){
-
-  if(index < text.length){
-
-    document.getElementById("typing").innerHTML += text.charAt(index);
-    index++;
-    setTimeout(typingEffect, 120);
-
-  }
-
-}
-
-window.addEventListener("load", typingEffect);
   
 </script>
 </body>
