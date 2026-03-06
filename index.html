@@ -678,7 +678,7 @@ body.dark .navbar.scrolled{
   opacity:1;
   transform:translateX(0);
 }
-   .menu-overlay{
+  .menu-overlay{
   position:fixed;
   top:0;
   left:0;
@@ -688,7 +688,7 @@ body.dark .navbar.scrolled{
   opacity:0;
   pointer-events:none;
   transition:0.3s ease;
-  z-index:1400;
+  z-index:1200;
 }
 
 .menu-overlay.active{
@@ -994,7 +994,7 @@ document.addEventListener("click", function(event){
   }
 
 });
-  const navLinks = document.querySelectorAll("#navLinks a");
+ const navLinks = document.querySelectorAll("#navLinks a");
 
 navLinks.forEach(link => {
   link.addEventListener("click", () => {
