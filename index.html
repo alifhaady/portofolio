@@ -518,19 +518,7 @@
   .more-photo{
   display:none;
 }
-.photo{
-  opacity:1;
-  transform:translateY(0);
-  transition:opacity 0.6s ease, transform 0.6s ease;
-}
-
-.photo.hide{
-  opacity:0;
-  transform:translateY(30px);
-  pointer-events:none;
-}
-
-.photo.none{
+.hidden{
   display:none;
 }
 @keyframes heroFade{
@@ -947,7 +935,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   photos.forEach((photo,index)=>{
     if(index > 2){
-      photo.classList.add("none");
+      photo.classList.add("hidden");
     }
   });
 
@@ -955,14 +943,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     if(!expanded){
 
-      photos.forEach((photo,index)=>{
-        if(index > 2){
-          photo.classList.remove("none");
-
-          setTimeout(()=>{
-            photo.classList.remove("hide");
-          },50);
-        }
+      photos.forEach(photo=>{
+        photo.classList.remove("hidden");
       });
 
       btn.innerText = "Show Less";
@@ -972,12 +954,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
       photos.forEach((photo,index)=>{
         if(index > 2){
-
-          photo.classList.add("hide");
-
-          setTimeout(()=>{
-            photo.classList.add("none");
-          },500);
+          photo.classList.add("hidden");
         }
       });
 
