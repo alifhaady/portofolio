@@ -966,33 +966,7 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 
 });
-  btn.addEventListener("click", function(){
-
-    if(!expanded){
-
-      photos.forEach(photo=>{
-        photo.classList.remove("hidden");
-      });
-
-      btn.innerText = "Show Less";
-      expanded = true;
-
-    }else{
-
-      photos.forEach((photo,index)=>{
-        if(index > 2){
-          photo.classList.add("hidden");
-        }
-      });
-
-      btn.innerText = "Show More";
-      expanded = false;
-
-    }
-
-  });
-
-});
+  
  function toggleMenu(){
 
   const menu = document.getElementById("navLinks");
