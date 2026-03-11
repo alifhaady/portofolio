@@ -521,6 +521,20 @@
 .hidden{
   display:none;
 }
+    .photo.showing{
+  animation: photoFade 0.6s ease;
+}
+
+@keyframes photoFade{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
 @keyframes heroFade{
 
 from{
@@ -943,10 +957,19 @@ document.addEventListener("DOMContentLoaded", function(){
 
     if(!expanded){
 
-      photos.forEach(photo=>{
-        photo.classList.remove("hidden");
-      });
+     photos.forEach((photo,index)=>{
+  if(index > 2){
 
+    photo.classList.remove("hidden");
+
+    photo.classList.add("showing");
+
+    setTimeout(()=>{
+      photo.classList.remove("showing");
+    },600);
+
+  }
+});
       btn.innerText = "Show Less";
       expanded = true;
 
